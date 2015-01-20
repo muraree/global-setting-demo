@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :setting
-  
+
   def can_send_notification?
     setting.try(:enable_notification) && setting.try(:email).present?
   end

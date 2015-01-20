@@ -13,7 +13,7 @@ class TestSettingsController < ApplicationController
 
   def new_email
   end
-  
+
   private
 
   # This filter redirect to global setting page, if setting is not proper.
