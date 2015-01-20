@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+		<div class="panel-body col-md-6">
+			
+			<%= form_for @setting, :html => { :class => "form-horizontal setting" } do |f| %>
+				
+				<div class="form-group">
+					<%= f.label :email, :class => 'control-label' %>
+					<%= f.text_field :email, class: "form-control" %>
+				</div>
+				
+				<div class="form-group">	
+					<%= f.check_box :enable_notification %>
+					<%= f.label :enable_notification %>
+				</div>
+				
+				<div class="form-group">
+					<%= f.submit nil, :class => 'btn btn-primary' %>
+				</div>
+					
+			<% end %>
+		</div>	
+	</div>
+	<% if current_user.can_send_notification? %>
+  	<%= link_to "Test Global Setting Email", new_email_test_settings_path %>
+  <% else %>
+    Note: Please provide a valid email and select enable notification checkbox to be able to send message.
+  <% end %>
+</div>
