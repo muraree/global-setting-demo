@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -43,6 +41,9 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'pry-rails', :group => :development
+  gem 'pry'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 gem 'validates_email_format_of'
 
@@ -50,4 +51,8 @@ gem 'therubyracer',  platforms: :ruby
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'devise'
-gem 'pry'
+
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end
