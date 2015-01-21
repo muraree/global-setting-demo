@@ -11,6 +11,15 @@
         </div>
       <% end %>
     </div>
+    Note: This message would sent to <%= current_user.setting.try(:email) %>
   </div>
-  Note: This message would sent to <%= current_user.setting.try(:email) %>
+  <div class="row">
+    <div class="panel-body col-md-6">
+      <% current_user.get_all_messages.each do |msg| %>
+        <%= msg.created_at %><br/>
+        <%= msg.body %><br><br>
+      <% end %>
+    </div>
+  </div>
 </div>
+

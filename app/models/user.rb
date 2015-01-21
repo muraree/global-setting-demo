@@ -5,8 +5,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :setting
+  has_many :messages
 
   def can_send_notification?
     setting.try(:enable_notification) && setting.try(:email).present?
   end
+
+  def get_all_messages
+    Rails.cache.fetch("messages_#{self.id}") do
+      self.messages
+    end
+  end
+
 end

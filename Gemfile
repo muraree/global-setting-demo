@@ -51,6 +51,7 @@ gem 'therubyracer',  platforms: :ruby
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'devise'
+gem 'dalli'
 
 group :production do
   gem 'rails_12factor'

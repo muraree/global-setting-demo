@@ -7,6 +7,7 @@ class TestSettingsController < ApplicationController
   # Then the email should be sent.
   def send_email
     unless params[:message].blank?
+      Message.create(:user_id => current_user.id, :body => params[:message])
       Notifier.test_message(current_user.setting.try(:email), params[:message]).deliver
       flash[:notice] = "Message sent successfully."   
     else
